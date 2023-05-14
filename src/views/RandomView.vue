@@ -1,6 +1,6 @@
 <template>
   <section id="wrapper">
-      <VideoPlayerComponent :id="video.id" />
+      <VideoPlayerComponent :id="video.id" :random="true" @change-video="getVideo" />
   </section>
 </template>
 
@@ -14,6 +14,15 @@ export default {
     VideoPlayerComponent
   },
 
+  methods: {
+    async getVideo() {
+      const res = await fetch('https://api-dot-cabview.nw.r.appspot.com/random');
+      const video = await res.json();
+
+      this.video = video;
+    }
+  },
+
   data() {
     return {
       video: {}
@@ -21,10 +30,7 @@ export default {
   },
 
   async beforeMount() {
-    const res = await fetch('https://api-dot-cabview.nw.r.appspot.com/random');
-    const video = await res.json();
-
-    this.video = video;
+    this.getVideo();
   }
 }
 </script>

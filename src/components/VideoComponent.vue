@@ -8,6 +8,7 @@
             <p class="video-stations">
               <span class="tag is-primary" v-if="video.departure_station">🚂 {{ video.departure_station.toUpperCase() }}</span>
               <span class="tag is-warning ml-1" v-if="video.arrival_station">🏁 {{ video.arrival_station.toUpperCase() }}</span>
+              <span class="tag is-info is-pulled-right">🕒 1h40</span>
             </p>
           </div>
         </div>
